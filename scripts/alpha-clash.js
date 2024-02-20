@@ -4,12 +4,16 @@
 //   const playGroundSection = document.getElementById("play-ground");
 //   playGroundSection.classList.remove("hidden");
 // }
+
+const artBoard = document.getElementById("art-board");
+const modalBox = document.getElementById('modal-box')
+
 function handleKeyboardKeyUpEvent(event) {
   const playerPressed = event.key;
   console.log("player pressed", playerPressed);
   // stop the game if press 'Esc'
-  if(playerPressed === 'Escape'){
-    gameOver()
+  if (playerPressed === "Escape") {
+    gameOver();
   }
   // current expected press
   const currentAlphabetElement = document.getElementById("current-alphabet");
@@ -19,9 +23,9 @@ function handleKeyboardKeyUpEvent(event) {
   // check match or not
   if (playerPressed === expectedAlphabet) {
     console.log("you got a point");
-    const currentScore = getTextElementValueById('current-score')
+    const currentScore = getTextElementValueById("current-score");
     const updateScore = currentScore + 1;
-    setTextElementById('current-score', updateScore);
+    setTextElementById("current-score", updateScore);
 
     // .......................option-2................................
     // update score
@@ -39,19 +43,22 @@ function handleKeyboardKeyUpEvent(event) {
     continueGame();
   } else {
     console.log("you lose a point");
-    const currentLife = getTextElementValueById('current-life')
+    const currentLife = getTextElementValueById("current-life");
     const updateLife = currentLife - 1;
-    setTextElementById('current-life', updateLife);
-    if(updateLife === 0){
-      gameOver()
+    const updateLifeParcent = (updateLife / 5) *100;
+    artBoard.style.background =`linear-gradient(#FFFFFFB3 ${updateLifeParcent}%,red)`;
+
+    setTextElementById("current-life", updateLife);
+    if (updateLife === 0) {
+      gameOver();
       // update final score
-      const gameScore = getTextElementValueById('current-score');
-      setTextElementById('game-score', gameScore)
+      const gameScore = getTextElementValueById("current-score");
+      setTextElementById("game-score", gameScore);
       // clear the last selected alphabet
-      const currentAlphabet = getElementTextById('current-alphabet')
+      const currentAlphabet = getElementTextById("current-alphabet");
       removeBackgroundColor(currentAlphabet);
     }
-     // .......................option-2................................
+    // .......................option-2................................
     // const currentLifeElement = document.getElementById("current-life");
     // const currentScoreText = currentLifeElement.innerText;
     // const currentLife = parseInt(currentScoreText);
@@ -77,11 +84,22 @@ function play() {
   hideElementById("score");
   showElementById("play-ground");
   // reset score and life
-  setTextElementById('current-life', 5)
-  setTextElementById('current-score', 0)
+  setTextElementById("current-life", 5);
+  setTextElementById("current-score", 0);
   continueGame();
+  artBoard.style.background= "linear-gradient(#FFFFFFB3 100%,red)"
 }
-function gameOver(){
+function gameOver() {
   hideElementById("play-ground");
   showElementById("score");
 }
+
+function modalOpen(event){
+if(event.clientY < 20){
+  modalBox.style.display = 'flex';
+}
+}
+function modalColse(){
+  modalBox.style.display = 'none';
+}
+document.body.onmousemove=modalOpen;

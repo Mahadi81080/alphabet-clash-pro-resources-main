@@ -30,21 +30,25 @@
     <main
       class="bg-[#010313] min-h-screen bg-[url(images/background.png)] bg-no-repeat bg-center text-white"
     >
-      <section id="home-screen"
-        class=" min-h-screen flex flex-col justify-center items-center "
+      <section
+        id="home-screen"
+        class="min-h-screen flex flex-col justify-center items-center"
       >
         <div class="flex flex-col items-center space-y-3">
           <h1 class="text-8xl">ALPHABET CLASH</h1>
           <p class="text-xl font-medium">
             Unleash Your Keyboard Kung Fu : Press “Enter” to Play
           </p>
-          <button onclick="play()" class="btn btn-white rounded-md">Play Now</button>
+          <button onclick="play()" class="btn btn-white rounded-md">
+            Play Now
+          </button>
         </div>
       </section>
 
       <section id="play-ground" class="hidden">
         <div class="flex flex-col items-center gap-20 pt-20">
           <div
+            id="art-board"
             class="artboard artboard-horizontal phone-6 border-8 rounded-xl border-[#010313CC] bg-[#FFFFFFB3]"
           >
             <div class="flex flex-col items-center">
@@ -55,7 +59,9 @@
             <div
               class="flex flex-col justify-center items-center h-full text-black"
             >
-              <p id="current-alphabet" class="text-9xl font-bold uppercase">Y</p>
+              <p id="current-alphabet" class="text-9xl font-bold uppercase">
+                Y
+              </p>
             </div>
           </div>
           <div>
@@ -95,7 +101,7 @@
           </div>
           <div class="flex justify-between w-3/4">
             <button
-              class="btn rounded-full px-6  bg-[#894189] text-white border-none"
+              class="btn rounded-full px-6 bg-[#894189] text-white border-none"
             >
               Life
               <i class="fa-solid fa-heart-circle-bolt fa-fw"></i>
@@ -111,15 +117,29 @@
           </div>
         </div>
       </section>
-      <section id="score" class="flex flex-col justify-center items-center min-h-screen hidden">
-        <div class=" text-center space-y-3 bg-[#FFFFFF33] rounded-lg p-4 border">
+      <section
+        id="score"
+        class="flex flex-col justify-center items-center min-h-screen hidden"
+      >
+        <div class="text-center space-y-3 bg-[#FFFFFF33] rounded-lg p-4 border">
           <h2 class="text-3xl">Game Over !</h2>
-            <h1 class="text-7xl">
-                <span class="font-extrabold">Score:</span>
-                <span id="game-score">14</span>
-            </h1>
-            <button onclick="play()" class="btn btn-white text-black">Play Again</button>
-            <p class="text-xl font-medium">Practice will make you Pro</p>
+          <h1 class="text-7xl">
+            <span class="font-extrabold">Score:</span>
+            <span id="game-score">14</span>
+          </h1>
+          <button onclick="play()" class="btn btn-white text-black">
+            Play Again
+          </button>
+          <p class="text-xl font-medium">Practice will make you Pro</p>
+        </div>
+      </section>
+      <section id="modal-box" class="fixed w-full h-full top-0 bg-black bg-opacity-40 justify-center items-center">
+        <div class="bg-purple-700 text-white px-4 py-8 rounded w-1/3 relative">
+          <button onclick="modalColse()" class="btn btn-sm btn-circle rounded-full border-white btn-ghost absolute right-2 top-2">
+            ✕
+          </button>
+          <h3 class="font-bold text-lg">Hello!</h3>
+          <p class="py-4">Press ESC key or click on ✕ button to close</p>
         </div>
       </section>
     </main>
